@@ -20,7 +20,7 @@ let render_projects = (slug) => {
             categories: ['featured', 'webdev']
         },
         {
-            image: 'assets/images/wrimoucon_main.png',
+            image: null,
             link: 'https://ieeexplore.ieee.org/abstract/document/10224423',
             title: 'WriMouCon: Wrist-Mounted Haptic Controller for Rendering Physical Properties in Virtual Reality',
             demo: false,
