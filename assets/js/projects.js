@@ -15,7 +15,7 @@ let render_projects = (slug) => {
             link: 'https://ieeexplore.ieee.org/abstract/document/10224423',
             title: 'WriMouCon: Wrist-Mounted Haptic Controller for Rendering Physical Properties in Virtual Reality',
             demo: false,
-            technologies: ['Haptics', 'VR', 'Wearable Device', 2023 WHC],
+            technologies: ['Haptics', 'VR', 'Wearable Device', '2023 WHC'],
             description: "Wristed Mounted wearable devices for rendering force feedback on the palm",
             categories: ['international']
         },
@@ -24,7 +24,7 @@ let render_projects = (slug) => {
             link: 'https://ieeexplore.ieee.org/abstract/document/10536487',
             title: 'Deep-Texture: A Lightweight Wearable Ring for Shape and Texture Rendering in Virtual Reality',
             demo: false,
-            technologies: ['Haptics', 'VR', 'Wearable Device',2024 VR],
+            technologies: ['Haptics', 'VR', 'Wearable Device','2024 VR'],
             description: "Finger mounted wearable devices for rendering shape/texture feedback",
             categories: ['poster']
         },
@@ -33,7 +33,7 @@ let render_projects = (slug) => {
             link: 'https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE12041775&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true',
             title: 'Single-Axis pose estimation model to solve occlusion issue with wearable haptic device using IMU data in VR',
             demo: false,
-            technologies: ['Haptics', 'VR', 'Wearable Device', 2024 KSC],
+            technologies: ['Haptics', 'VR', 'Wearable Device', '2024 KSC'],
             description: "Estimating users hand position using IMU.",
             categories: ['domestic']
         },
