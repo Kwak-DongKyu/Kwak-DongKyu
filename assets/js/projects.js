@@ -24,7 +24,7 @@ let render_projects = (slug) => {
             link: 'https://ieeexplore.ieee.org/abstract/document/10536487',
             title: 'Deep-Texture: A Lightweight Wearable Ring for Shape and Texture Rendering in Virtual Reality',
             demo: false,
-            technologies: ['Haptics', 'VR', 'Wearable Device','2024 VR'],
+            technologies: ['Haptics', 'VR', 'Wearable Device', '2024 VR'],
             description: "Finger mounted wearable devices for rendering shape/texture feedback",
             categories: ['poster']
         },
