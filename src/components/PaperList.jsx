@@ -3,7 +3,7 @@ import papersData from '../data/papers.json';
 
 const PaperList = () => {
     const [filter, setFilter] = useState('All');
-    const filters = ['All', 'International', 'Domestic', 'Demo', 'Poster'];
+    const filters = ['All', 'Conference', 'Journal', 'Demo', 'Poster'];
 
     const filteredPapers = filter === 'All'
         ? papersData

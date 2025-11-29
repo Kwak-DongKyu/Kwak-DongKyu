@@ -5,6 +5,24 @@ const RackPinionScroll = () => {
     const [labelPositions, setLabelPositions] = useState({ intro: 10, papers: 50, contact: 90 });
 
     const calculatePositions = () => {
+        // ---------------------------------------------------------------------------
+        // [USER GUIDE] How to manually change label positions:
+        //
+        // Currently, the code automatically calculates where the labels should be 
+        // based on the actual position of the sections (Intro, Papers, Contact) on the page.
+        //
+        // IF YOU WANT TO SET THEM MANUALLY (Fixed positions):
+        // 1. Comment out or delete the entire logic below inside this function.
+        // 2. Uncomment and use the setLabelPositions line below:
+        //
+        setLabelPositions({
+            intro: 10,    // 10% from the top
+            papers: 50,   // 50% (middle)
+            contact: 90   // 90% from the top
+        });
+        return;
+        // ---------------------------------------------------------------------------
+
         const totalDocHeight = document.documentElement.scrollHeight;
         const viewportHeight = document.documentElement.clientHeight;
         const scrollableHeight = totalDocHeight - viewportHeight;

@@ -73,17 +73,27 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* This controls horizontal centering (Left/Center/Right) */
   text-align: center;
-  padding-top: 8rem;
+
+  /* To move Intro down:
+     1. We use 'justify-content: flex-start' to stop automatic vertical centering.
+     2. Then 'padding-top' directly pushes the content down from the top.
+     Increase '20rem' to move it further down. */
+  justify-content: flex-start;
+  padding-top: 20rem;
+
   max-width: 800px;
   margin: 0 auto;
 }
 
 .profile-photo {
+  /* Change these values to adjust profile picture size */
   width: 160px;
-  /* Reduced size as requested */
   height: 160px;
-  border-radius: 50%;
+
+  border-radius: 12px;
+  /* Rounded rectangle as requested */
   /* Clean circle */
   object-fit: cover;
   border: 3px solid var(--accent-color);
@@ -167,6 +177,13 @@ section {
   margin-bottom: 2rem;
 }
 
+/* To adjust Paper List position/spacing:
+   You can add 'padding-top' or 'margin-top' here, 
+   or adjust the global 'section' padding. */
+.paper-list {
+  /* Example: padding-top: 5rem; */
+}
+
 .filters {
   display: flex;
   justify-content: center;
@@ -234,6 +251,9 @@ section {
 
 /* Footer */
 .footer {
+  /* To adjust Footer position:
+     'margin-top: auto' pushes it to the bottom.
+     Increase 'padding' to add more space inside. */
   margin-top: auto;
   padding: 3rem 0;
   text-align: center;
