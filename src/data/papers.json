@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "WriMouCon: Wrist-Mounted Haptic Controller for Rendering Physical Properties in Virtual Reality",
+        "authors": "Minjae Jo, DongKyu Kwak, Sang Ho Yoon",
+        "venue": "WHC 2023",
+        "type": "International",
+        "link": "https://ieeexplore.ieee.org/abstract/document/10224423"
+    },
+    {
+        "id": 2,
+        "title": "Deep-Texture: A Lightweight Wearable Ring for Shape and Texture Rendering in Virtual Reality",
+        "authors": "DongKyu Kwak, Youjin Sung, Taeyeon Kim, Woontack Woo, Sang HO Yoon.",
+        "venue": "IEEE VR 2024",
+        "type": "Poster",
+        "link": "https://ieeexplore.ieee.org/abstract/document/10536487"
+    },
+    {
+        "id": 3,
+        "title": "Pressure Movement Sensation with Rack and Pinion Based Wearable Interface",
+        "authors": "DongKyu Kwak, Kyungjin Seo, Racehl Kim, Sang HO Yoon",
+        "venue": "UIST 2025",
+        "type": "Demo",
+        "link": "https://dl.acm.org/doi/abs/10.1145/3746058.3760439"
+    },
+    {
+        "id": 4,
+        "title": "Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction",
+        "authors": "DongKyu Kwak, Hojeong Lee, Sang HO Yoon",
+        "venue": "ISMARS 2025",
+        "type": "Poster",
+        "link": "https://www.ieeeismar.net/2025/"
+    }
+]
