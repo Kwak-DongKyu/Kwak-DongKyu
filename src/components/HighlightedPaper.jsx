@@ -23,10 +23,13 @@ const HighlightedPaper = ({ paper }) => {
                 <div className="highlight-model-container">
                     {paper.model ? (
                         <Suspense fallback={<div className="loading-text">Loading Model...</div>}>
-                            <ModelViewer modelUrl={paper.model} materialUrl={paper.material} />
+                            <ModelViewer
+                                modelUrl={import.meta.env.BASE_URL + paper.model}
+                                materialUrl={paper.material ? import.meta.env.BASE_URL + paper.material : null}
+                            />
                         </Suspense>
                     ) : paper.image ? (
-                        <img src={paper.image} alt={paper.title} className="highlight-image" />
+                        <img src={import.meta.env.BASE_URL + paper.image} alt={paper.title} className="highlight-image" />
                     ) : (
                         <div className="highlight-placeholder">No Preview</div>
                     )}

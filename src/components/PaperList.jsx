@@ -40,7 +40,7 @@ const PaperList = () => {
                         <Link to={`/paper/${paper.id}`} className="paper-link-wrapper">
                             <div className="paper-thumbnail">
                                 {paper.image ? (
-                                    <img src={paper.image} alt={paper.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    <img src={import.meta.env.BASE_URL + paper.image} alt={paper.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 ) : (
                                     <div className="thumbnail-placeholder" />
                                 )}

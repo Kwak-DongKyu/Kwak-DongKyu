@@ -50,10 +50,13 @@ const PaperDetail = () => {
                     <div className="detail-model-group">
                         {paper.model ? (
                             <Suspense fallback={<div style={{ color: 'white', padding: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>Loading 3D Model...</div>}>
-                                <ModelViewer modelUrl={paper.model} materialUrl={paper.material} />
+                                <ModelViewer
+                                    modelUrl={import.meta.env.BASE_URL + paper.model}
+                                    materialUrl={paper.material ? import.meta.env.BASE_URL + paper.material : null}
+                                />
                             </Suspense>
                         ) : paper.image ? (
-                            <img src={paper.image} alt={paper.title} className="detail-image" />
+                            <img src={import.meta.env.BASE_URL + paper.image} alt={paper.title} className="detail-image" />
                         ) : (
                             <div className="media-placeholder" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
                                 <p>No 3D Model or Image Available</p>
