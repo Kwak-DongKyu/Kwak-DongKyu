@@ -5,7 +5,8 @@
         "authors": "Minjae Jo, DongKyu Kwak, Sang Ho Yoon",
         "venue": "WHC 2023",
         "type": "Conference",
-        "link": "https://ieeexplore.ieee.org/abstract/document/10224423"
+        "link": "https://ieeexplore.ieee.org/abstract/document/10224423",
+        "image": "/images/whc2023.png"
     },
     {
         "id": 2,
@@ -13,22 +14,38 @@
         "authors": "DongKyu Kwak, Youjin Sung, Taeyeon Kim, Woontack Woo, Sang Ho Yoon.",
         "venue": "IEEE VR 2024",
         "type": "Poster",
-        "link": "https://ieeexplore.ieee.org/abstract/document/10536487"
+        "link": "https://ieeexplore.ieee.org/abstract/document/10536487",
+        "image": "/images/deeptexture.png"
     },
     {
         "id": 3,
         "title": "Pressure Movement Sensation with Rack and Pinion Based Wearable Interface",
-        "authors": "DongKyu Kwak, Kyungjin Seo, Racehl Kim, Sang Ho Yoon",
+        "authors": "DongKyu Kwak, Kyungjin Seo, Rachel Kim, Sang Ho Yoon",
         "venue": "UIST 2025",
         "type": "Demo",
-        "link": "https://dl.acm.org/doi/abs/10.1145/3746058.3760439"
+        "link": "https://dl.acm.org/doi/abs/10.1145/3746058.3760439",
+        "image": "/images/uist2025.png"
     },
     {
         "id": 4,
         "title": "Effect of Movement Velocity and Flexion Angle on Realistic Haptic Reproduction",
         "authors": "DongKyu Kwak, Hojeong Lee, Sang Ho Yoon",
-        "venue": "ISMARS 2025",
+        "venue": "ISMAR 2025",
         "type": "Poster",
-        "link": "https://www.ieeeismar.net/2025/"
+        "link": "https://www.ieeeismar.net/2025/",
+        "image": "/images/ismar2025.png"
+    },
+    {
+        "id": 5,
+        "title": "Moving-Press: Pressure-based Moving Phantom Sensation for Immersive VR Hand Interaction",
+        "authors": "DongKyu Kwak, Kyungjin Seo, Rachel Kim, Sang Ho Yoon",
+        "venue": "IMWUT 2025",
+        "type": "Journal",
+        "link": "https://dl.acm.org/doi/10.1145/3770682",
+        "image": "/images/imwut2025.png",
+        "model": "/models/imwut2025.obj",
+        "material": "/models/imwut2025.mtl",
+        "highlighted": true,
+        "abstract": "We propose a haptic interface, Moving-Press, enabling a pressure-based moving phantom sensation on the user's hand. The moving phantom sensation refers to an illusory perception of a continuous tactile stimulus traversing between two discrete stimulation points. While this phenomenon has been studied in the context of vibrotactile feedback, it remains underexplored in the domain of pressure feedback. As integrating phantom sensation offers a promising approach to simplifying typically bulky pressure devices, employing this phenomenon enables more compact pressure rendering systems. Therefore, we investigated whether pressure movement could be induced using two fixed-positioned actuators by leveraging pressure-based phantom sensation. Our initial perception study validated the occurrence of pressure-based phantom sensations on the hand. Then, we examined how varying the indentation depth of each actuator influences the perceived location, and how the phantom sensation intensity differs from a single pressure stimulus. Finally, we proposed a rack-and-pinion-driven wearable haptic device and conducted a user study to identify an appropriate haptic rendering profile for producing natural pressure movement. The results demonstrated that temporal modulation of indentation depth using the proposed device successfully evokes pressure-based moving phantom sensation."
     }
 ]

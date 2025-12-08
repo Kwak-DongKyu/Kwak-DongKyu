@@ -58,6 +58,18 @@ const RackPinionScroll = () => {
             if (introPos > papersPos - minGap) introPos = papersPos - minGap;
         }
 
+        // MANUAL OVERRIDE:
+        // If you want to manually set the positions of the letters on the rack,
+        // you can comment out the calculation logic above and set them directly here:
+        /*
+        setLabelPositions({
+            intro: 10,   // 10% from the top
+            papers: 50,  // 50% from the top
+            contact: 90  // 90% from the top
+        });
+        return; 
+        */
+
         setLabelPositions({
             intro: introPos,
             papers: papersPos,

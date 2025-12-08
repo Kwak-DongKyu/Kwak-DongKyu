@@ -1,3 +1,10 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --bg-color: #0f172a;
   --text-color: #f8fafc;
@@ -21,7 +28,7 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
-  /* Hide scrollbar for Chrome, Safari and Opera */
+  /* Hide scrollbar */
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -34,8 +41,8 @@ body::-webkit-scrollbar {
 
 #root {
   max-width: 100%;
-  margin-left: 100px;
-  /* Strict margin to avoid rack overlap */
+  margin-right: 100px;
+  /* Shift content to make room on the RIGHT for Rack */
   width: calc(100% - 100px);
   min-height: 100vh;
   display: flex;
@@ -62,39 +69,188 @@ h3 {
 section {
   padding: 4rem 0;
   min-height: 100vh;
-  /* Ensure each section takes at least full viewport height */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Introduction Section */
+/* =========================================
+   2. NAVBAR
+   ========================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  /* Let clicks pass through empty areas */
+}
+
+.navbar-content {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  pointer-events: auto;
+  /* Re-enable clicks */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.navbar-content:hover {
+  background: rgba(15, 23, 42, 0.85);
+  transform: translateY(2px);
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  color: var(--secondary-text);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+.nav-link:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+.nav-separator {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .navbar-content {
+    padding: 0.5rem 1.5rem;
+    gap: 1rem;
+  }
+}
+
+/* =========================================
+   3. RACK & PINION SCROLL (RIGHT SIDE)
+   ========================================= */
+.rack-container {
+  position: fixed;
+  right: 0;
+  /* Position on RIGHT */
+  top: 0;
+  bottom: 0;
+  width: var(--rack-width);
+  z-index: 100;
+  pointer-events: none;
+  background: var(--bg-color);
+}
+
+.rack-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 15px;
+  /* Stick to the right edge */
+  width: 20px;
+  background: #334155;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rack-teeth {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-image: linear-gradient(to bottom, #1e293b 50%, transparent 50%);
+  background-size: 100% 10px;
+  opacity: 0.5;
+}
+
+.rack-labels {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.rack-label {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  text-shadow: 0 0 5px #0f172a, 0 0 2px #0f172a;
+}
+
+.rack-label span {
+  line-height: 1.1;
+  display: block;
+}
+
+.pinion {
+  position: absolute;
+  right: 40px;
+  /* Position to the LEFT of the rail */
+  left: auto;
+  transform: translateY(-50%);
+  /* Rotation via inline style */
+  width: 40px;
+  height: 40px;
+  font-size: 36px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
+  transition: top 0.1s linear;
+  z-index: 30;
+}
+
+/* =========================================
+   4. INTRODUCTION SECTION
+   ========================================= */
 .introduction {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* This controls horizontal centering (Left/Center/Right) */
   text-align: center;
-
-  /* To move Intro down:
-     1. We use 'justify-content: flex-start' to stop automatic vertical centering.
-     2. Then 'padding-top' directly pushes the content down from the top.
-     Increase '20rem' to move it further down. */
-  justify-content: flex-start;
-  padding-top: 20rem;
-
+  padding-top: 8rem;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .profile-photo {
-  /* Change these values to adjust profile picture size */
   width: 160px;
   height: 160px;
-
-  border-radius: 12px;
-  /* Rounded rectangle as requested */
-  /* Clean circle */
+  border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--accent-color);
   margin-bottom: 2rem;
@@ -113,6 +269,7 @@ section {
   margin-bottom: 0.5rem;
   background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.5px;
 }
@@ -170,18 +327,121 @@ section {
   transform: translateY(-2px);
 }
 
-/* Paper List Section */
+/* =========================================
+   5. HIGHLIGHTED PAPER
+   ========================================= */
+.highlighted-paper {
+  margin-bottom: 4rem;
+  padding: 2.5rem;
+  border-radius: 20px;
+  /* Glassmorphism via .glass-panel */
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.highlight-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.highlight-venue {
+  color: var(--accent-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 4px;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.highlight-title {
+  font-size: 1.4rem !important;
+  /* Force override */
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-align: left !important;
+  /* Explicitly align left */
+}
+
+.highlight-authors {
+  color: var(--secondary-text);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.highlight-abstract {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.highlight-model-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.highlight-btn {
+  margin-top: auto;
+}
+
+.highlight-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.highlight-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--secondary-text);
+}
+
+@media (max-width: 900px) {
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-model-container {
+    order: -1;
+  }
+}
+
+/* =========================================
+   6. PAPER LIST SECTION
+   ========================================= */
 .paper-list h2 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 2rem;
 }
 
-/* To adjust Paper List position/spacing:
-   You can add 'padding-top' or 'margin-top' here, 
-   or adjust the global 'section' padding. */
-.paper-list {
-  /* Example: padding-top: 5rem; */
+.paper-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .filters {
@@ -208,13 +468,6 @@ section {
   border-color: var(--accent-color);
   color: #0f172a;
   font-weight: 600;
-}
-
-.paper-list ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 .paper-item {
@@ -249,11 +502,188 @@ section {
   font-weight: 500;
 }
 
-/* Footer */
+.paper-link-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  align-items: flex-start;
+}
+
+.paper-thumbnail {
+  width: 120px;
+  height: 80px;
+  background-color: #334155;
+  border-radius: 8px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.paper-thumbnail::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.1) 50%, transparent 55%);
+}
+
+.paper-content {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .paper-link-wrapper {
+    flex-direction: column;
+  }
+
+  .paper-thumbnail {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+/* =========================================
+   7. PAPER DETAIL PAGE & SHARED GLASS
+   ========================================= */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.7) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.paper-detail-container {
+  max-width: 1200px;
+  /* Wide layout */
+  margin: 6rem auto;
+  padding: 2rem;
+  min-height: 80vh;
+}
+
+.back-button {
+  background: transparent;
+  border: 1px solid var(--secondary-text);
+  color: var(--secondary-text);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.paper-detail-content {
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Detail Top Layout (Title | Model) */
+.detail-top-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+
+.detail-header-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail-model-group {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.detail-type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.detail-header {
+  margin-bottom: 2rem;
+  /* Spacing between Venue and Button */
+}
+
+.detail-venue {
+  color: var(--secondary-text);
+  font-size: 1.1rem;
+}
+
+.detail-authors,
+.detail-abstract {
+  margin-bottom: 2rem;
+}
+
+.detail-authors h3,
+.detail-abstract h3 {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-authors p,
+.detail-abstract p {
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.read-paper-btn {
+  display: inline-block;
+  background: var(--accent-color);
+  color: #0f172a;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.read-paper-btn:hover {
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+}
+
+.detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .detail-top-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .detail-model-group {
+    order: -1;
+  }
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
 .footer {
-  /* To adjust Footer position:
-     'margin-top: auto' pushes it to the bottom.
-     Increase 'padding' to add more space inside. */
   margin-top: auto;
   padding: 3rem 0;
   text-align: center;
@@ -279,106 +709,4 @@ section {
 .footer p {
   color: #64748b;
   font-size: 0.9rem;
-}
-
-/* Rack and Pinion Scroll Styles */
-.rack-container {
-  position: fixed;
-  left: 0;
-  /* Stick to the far left */
-  top: 0;
-  bottom: 0;
-  width: var(--rack-width);
-  z-index: 100;
-  pointer-events: none;
-  background: var(--bg-color);
-  /* Optional: hide content behind it */
-}
-
-.rack-rail {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  background: #334155;
-  border-radius: 4px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Realistic Gear Teeth */
-.rack-teeth {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  background-image: linear-gradient(to bottom,
-      #1e293b 50%,
-      transparent 50%);
-  background-size: 100% 10px;
-  opacity: 0.5;
-}
-
-/* Section Labels on the Rack */
-.rack-labels {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 20;
-  /* Ensure text is above the rail */
-}
-
-.rack-label {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  /* Ensure vertical stacking */
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-
-  /* Typography */
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  /* Readable size */
-  font-weight: 800;
-  color: var(--accent-color);
-  text-shadow: 0 0 5px #0f172a, 0 0 2px #0f172a;
-  /* Strong shadow for readability over teeth */
-  opacity: 1;
-  letter-spacing: 0;
-}
-
-.rack-label span {
-  line-height: 1.1;
-  display: block;
-  /* Ensure each letter is on its own line */
-}
-
-/* The Pinion (Gear) */
-.pinion {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  /* Center horizontally */
-  width: 40px;
-  height: 40px;
-  font-size: 36px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
-  transition: top 0.1s linear;
-  z-index: 30;
-  /* Above labels */
 }
