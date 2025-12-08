@@ -8,6 +8,7 @@ const HighlightedPaper = ({ paper }) => {
 
     return (
         <div className="highlighted-paper glass-panel">
+            <div className="highlight-badge">Highlighted Paper</div>
             <div className="highlight-grid">
                 <div className="highlight-info">
                     <span className="highlight-venue">{paper.venue}</span>
@@ -21,6 +22,7 @@ const HighlightedPaper = ({ paper }) => {
                     </Link>
                 </div>
                 <div className="highlight-model-container">
+                    <div className="highlight-model-instruction">Click to view the model</div>
                     {paper.model ? (
                         <Suspense fallback={<div className="loading-text">Loading Model...</div>}>
                             <ModelViewer

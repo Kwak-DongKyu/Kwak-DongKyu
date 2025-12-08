@@ -68,7 +68,7 @@ function Model({ url, materialUrl }) {
 
 const ModelViewer = ({ modelUrl, materialUrl }) => {
     return (
-        <div className="model-viewer-wrapper" style={{ width: '100%', height: '100%', minHeight: '400px', position: 'relative' }}>
+        <div className="model-viewer-wrapper">
             <ErrorBoundary>
                 <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 150], fov: 50 }}>
                     <ambientLight intensity={0.5} />
