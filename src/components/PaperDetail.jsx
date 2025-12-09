@@ -48,6 +48,7 @@ const PaperDetail = () => {
                     </div>
 
                     <div className="detail-model-group">
+                        <div className="highlight-model-instruction">Click to view the model</div>
                         {paper.model ? (
                             <Suspense fallback={<div style={{ color: 'white', padding: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>Loading 3D Model...</div>}>
                                 <ModelViewer

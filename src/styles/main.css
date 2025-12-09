@@ -486,7 +486,8 @@ section {
 }
 
 /* 마우스를 올리면 글씨가 사라지게 해서 모델 감상을 방해하지 않음 */
-.highlight-model-container:hover .highlight-model-instruction {
+.highlight-model-container:hover .highlight-model-instruction,
+.detail-model-group:hover .highlight-model-instruction {
   opacity: 0;
 }
 
@@ -679,6 +680,8 @@ section {
   aspect-ratio: 4/3;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 12px;
+  position: relative;
+  /* Added for instruction positioning */
 }
 
 .detail-type {
@@ -830,11 +833,15 @@ section {
   /* 4. Navbar */
   .navbar {
     padding: 0.5rem 1rem;
+    width: 100%;
+    /* Reset width */
+    margin-right: 0;
+    /* Reset margin */
   }
 
   .navbar-content {
-    width: 100%;
-    max-width: 100%;
+    width: fit-content;
+    max-width: none;
     justify-content: center;
     gap: 1rem;
     padding: 0.6rem 1rem;
@@ -874,10 +881,24 @@ section {
     text-align: justify;
   }
 
+  /* Reduce tag size to fit one line */
+  .interest-tag {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.6rem;
+  }
+
   /* 6. Highlight Section */
   .highlighted-paper {
     padding: 2rem 1.5rem;
     margin-bottom: 3rem;
+  }
+
+  /* Smaller badge for mobile */
+  .highlight-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    /* Increased vertical padding */
+    top: -12px;
   }
 
   .highlight-grid {
@@ -886,8 +907,15 @@ section {
   }
 
   .highlight-model-container {
-    aspect-ratio: 16/9;
+    aspect-ratio: 1/1;
     order: -1;
+  }
+
+  .highlight-model-instruction {
+    font-size: 0.45rem;
+    /* 글씨 크기 조절 */
+    padding: 0.4rem 1rem;
+    /* 여백 조절 */
   }
 
   .model-viewer-wrapper {
@@ -896,7 +924,8 @@ section {
   }
 
   .highlight-title {
-    font-size: 1.5rem !important;
+    font-size: 1rem !important;
+    /* Reduced from 1.5rem */
   }
 
   /* 7. Paper List & Filters */
@@ -943,16 +972,16 @@ section {
 
   .detail-model-group {
     order: -1;
-    aspect-ratio: 16/9;
+    aspect-ratio: 1/1;
+    /* Square for better visibility */
     width: 100%;
     max-width: 100%;
     /* Prevent overflow */
     overflow: hidden;
-    /* USER GUIDE: Adjust aspect-ratio here if the model box is too tall/short */
   }
 
   .detail-header h1 {
-    font-size: 1.35rem;
+    font-size: 1.1rem;
     /* Reduced for mobile */
     line-height: 1.3;
     word-break: break-word;
